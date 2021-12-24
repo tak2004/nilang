@@ -1,0 +1,50 @@
+INFO: "[decorators]" is always optional
+
+IMPORT/INCLUDE/USE:
+import name1, name2,... from "path/filename", match_block, ...;
+  INFO: "name1, name2,... from" is optional
+
+CLASS:
+[decorators] class name{}
+
+METHOD/FUNCTION:
+[decorators] name([decorators] how_to_pass type name) -> result_type {}
+  INFO: "-> result_type" is optional
+  INFO: how_to_pass can be in, out or inout
+
+MEMBER-/GLOBAL-Variable
+[decorators] type name = init_value;
+  INFO: "= init_value" is optional except for const decorator
+
+TYPE-SYNTAX:
+auto keyword solves type by parsing
+
+POSTPROCESSOR/TEMPLATING/MACROS:
+decorator name(in AST Node) -> AST {}
+  INFO: const, extend are reserved 
+
+CONTROLFLOW/BRANCHING
+expression is ...;
+block_expression is { expression ... }
+  INFO: if only one expression is used then braces are optional.
+
+return value;
+  INFO: return the specified value to the callee and leave the block_expression.
+
+continue;
+  INFO: Jump to the start of the block_expression and continue the execution.
+  
+for iterator in collection block_expression
+
+while condition block_expression
+
+loop block_expression
+  INFO: A loop must contain a return point!
+
+if expression block_expression else block_expression
+  INFO: "else block_expression" is optional
+
+match input {
+    condition : block_expression,
+    condition : block_expression,
+} else block_expression;
